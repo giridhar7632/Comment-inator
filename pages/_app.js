@@ -1,4 +1,4 @@
-import { AuthProvider } from '../lib/Auth';
+import { AuthProvider } from '../lib/auth';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
