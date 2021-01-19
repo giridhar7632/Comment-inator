@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { useAuth } from '../lib/auth';
 
 export default function Home() {
+  const auth = useAuth();
   return (
     <div className={styles.container}>
       <Head>
@@ -31,16 +33,14 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Comment-inator</h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <button onClick={(e) => auth.signinWithGitHub()}>signIn</button>
+        {auth?.user && <button onClick={(e) => auth.signout()}>signOut</button>}
+        <div>{auth?.user?.email}</div>
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://comment-inator.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
         >
