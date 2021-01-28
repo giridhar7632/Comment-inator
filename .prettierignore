@@ -1,3 +1,10 @@
-# Ignore artifacts:
-build
-coverage
+node_modules/
+public/
+
+.next
+.gitignore
+.eslintrc
+package-lock.json
+.prettierignore
+.env.local
+LICENSE
