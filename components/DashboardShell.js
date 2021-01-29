@@ -33,7 +33,6 @@ const DashboardShell = ({ children }) => {
 			</Flex>
 			<Flex backgroundColor="gray.100" p={8} height="100vh">
 				<Flex
-					//justifyContent="center" alignItems="center"
 					maxWidth="800px"
 					w="100%"
 					ml="auto"
