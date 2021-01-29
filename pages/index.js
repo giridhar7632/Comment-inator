@@ -1,4 +1,4 @@
-import { Box, Button, Code, Flex, Icon, Text } from '@chakra-ui/core'
+import { Button, Flex, Icon } from '@chakra-ui/core'
 import Head from 'next/head'
 import { useAuth } from '@/lib/auth'
 

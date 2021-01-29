@@ -1,7 +1,7 @@
 import React from 'react'
 import { Heading, Flex, Text, Button } from '@chakra-ui/core'
 
-import DashboardShell from './DashBoardShell'
+import DashboardShell from './DashboardShell'
 
 const EmptyState = () => (
 	<DashboardShell>
