@@ -9,8 +9,9 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Heading
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { useAuth } from '@/lib/auth'
+import { Logo } from '@/styles/icons'
 
 const DashboardShell = ({ children }) => {
   const { user } = useAuth()
@@ -23,8 +24,8 @@ const DashboardShell = ({ children }) => {
         py={4}
         px={8}
       >
-        <Stack spacing={4} isInline align="center">
-          <Icon color="pink.500" name="logo" size="24px" />
+        <Stack spacing={4} isInline={true} align="center">
+          <Logo color="pink.500" boxSize="24px" />
           <Link>Feedback</Link>
           <Link>Sites</Link>
         </Stack>

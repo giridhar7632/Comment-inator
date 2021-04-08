@@ -13,14 +13,14 @@ import {
   FormLabel,
   Input,
   useDisclosure
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { createSite } from '@/lib/db'
 
 export default function AddSiteModal() {
   const initialRef = useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { handleSubmit, register } = useForm()
-  const onCreateSite = (values) => createSite(values)
+  const onCreateSite = (values) => console.log(values)
 
   return (
     <>
@@ -36,47 +36,50 @@ export default function AddSiteModal() {
 
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent as="form" onSubmit={handleSubmit(onCreateSite)}>
+        <ModalContent>
           <ModalHeader fontWeight="bold">Add Site</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>Name</FormLabel>
-              <Input
-                ref={initialRef}
-                placeholder="My Site"
-                name="site"
-                {...register('site', {
-                  required: 'Required'
-                })}
-              />
-            </FormControl>
+          <form>
+            <ModalBody pb={6}>
+              <FormControl>
+                <FormLabel>Name</FormLabel>
+                <Input
+                  ref={initialRef}
+                  placeholder="My Site"
+                  type="site"
+                  {...register('site', {
+                    required: 'Required'
+                  })}
+                />
+              </FormControl>
 
-            <FormControl mt={4}>
-              <FormLabel>Link</FormLabel>
-              <Input
-                placeholder="https://website.com"
-                name="link"
-                {...register('link', {
-                  required: 'Required'
-                })}
-              />
-            </FormControl>
-          </ModalBody>
+              <FormControl mt={4}>
+                <FormLabel>Link</FormLabel>
+                <Input
+                  placeholder="https://website.com"
+                  type="link"
+                  {...register('link', {
+                    required: 'Required'
+                  })}
+                />
+              </FormControl>
+            </ModalBody>
 
-          <ModalFooter>
-            <Button onClick={onClose} fontWeight="medium">
-              Cancel
-            </Button>
-            <Button
-              fontWeight="medium"
-              variantColor="pink"
-              color="whiteAlpha.900"
-              mr={3}
-            >
-              Create
-            </Button>
-          </ModalFooter>
+            <ModalFooter>
+              <Button onClick={onClose} fontWeight="medium">
+                Cancel
+              </Button>
+              <Button
+                fontWeight="medium"
+                colorScheme="pink"
+                color="whiteAlpha.900"
+                mr={3}
+                onClick={handleSubmit(onCreateSite)}
+              >
+                Create
+              </Button>
+            </ModalFooter>
+          </form>
         </ModalContent>
       </Modal>
     </>
