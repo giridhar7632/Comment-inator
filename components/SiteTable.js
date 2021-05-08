@@ -16,8 +16,8 @@ const SiteTable = ({ sites }) => {
         </Tr>
       </thead>
       <tbody>
-        {sites.map((site) => {
-          ;<Box as="tr" key={site.id}>
+        {sites.map((site) => (
+          <Box as="tr" key={site.url}>
             <Td fontWeight="medium">{site.name}</Td>
             <Td>{site.url}</Td>
             <Td>
@@ -25,7 +25,7 @@ const SiteTable = ({ sites }) => {
             </Td>
             <Td>{format(parseISO(site.createdAt), 'PPpp')}</Td>
           </Box>
-        })}
+        ))}
       </tbody>
     </Table>
   )

@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { useAuth } from '@/lib/auth'
 import { Logo } from '@/styles/icons'
+import AddSiteModal from './AddSiteModal'
 
 const DashboardShell = ({ children }) => {
   const { user, signout } = useAuth()
@@ -57,21 +58,7 @@ const DashboardShell = ({ children }) => {
             <Heading color="black" mb={4}>
               My Sites
             </Heading>
-            <Button
-              variant="solid"
-              size="md"
-              fontWeight="bold"
-              backgroundColor="gray.900"
-              color="white"
-              fontWeight="medium"
-              _hover={{ bg: 'gray.700' }}
-              _active={{
-                bg: 'gray.800',
-                transform: 'scale(0.95)'
-              }}
-            >
-              + Add Site
-            </Button>
+            <AddSiteModal>+ Add Site</AddSiteModal>
           </Flex>
           {children}
         </Flex>
