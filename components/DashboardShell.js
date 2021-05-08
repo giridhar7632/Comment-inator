@@ -8,13 +8,14 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Button,
   Heading
 } from '@chakra-ui/react'
 import { useAuth } from '@/lib/auth'
 import { Logo } from '@/styles/icons'
 
 const DashboardShell = ({ children }) => {
-  const { user } = useAuth()
+  const { user, signout } = useAuth()
   return (
     <Flex flexDirection="column">
       <Flex
@@ -26,11 +27,13 @@ const DashboardShell = ({ children }) => {
       >
         <Stack spacing={4} isInline={true} align="center">
           <Logo color="pink.500" boxSize="24px" />
-          <Link>Feedback</Link>
           <Link>Sites</Link>
+          <Link>Comments</Link>
         </Stack>
         <Flex alignItems="center">
-          <Link mr={4}>Account</Link>
+          <Link mr={8} onClick={(e) => signout()}>
+            Log out
+          </Link>
           <Avatar size="sm" src={user?.photoUrl} />
         </Flex>
       </Flex>
@@ -50,9 +53,26 @@ const DashboardShell = ({ children }) => {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Heading color="black" mb={4}>
-            Sites
-          </Heading>
+          <Flex justifyContent="space-between" alignItems="center">
+            <Heading color="black" mb={4}>
+              My Sites
+            </Heading>
+            <Button
+              variant="solid"
+              size="md"
+              fontWeight="bold"
+              backgroundColor="gray.900"
+              color="white"
+              fontWeight="medium"
+              _hover={{ bg: 'gray.700' }}
+              _active={{
+                bg: 'gray.800',
+                transform: 'scale(0.95)'
+              }}
+            >
+              + Add Site
+            </Button>
+          </Flex>
           {children}
         </Flex>
       </Flex>

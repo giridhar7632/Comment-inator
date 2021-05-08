@@ -16,21 +16,29 @@ import {
   useToast
 } from '@chakra-ui/react'
 import { createSite } from '@/lib/db'
+import { useAuth } from '@/lib/auth'
 
 export default function AddSiteModal() {
   const initialRef = useRef()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { handleSubmit, register } = useForm()
   const toast = useToast()
-  const onCreateSite = (values) => {
-    createSite(values)
+  const auth = useAuth()
+  const onCreateSite = ({ name, url }) => {
+    createSite({
+      authorId: auth.user.uid,
+      createdAt: new Date().toISOString(),
+      name,
+      url
+    })
     toast({
       title: 'Success!!!',
-      description: "We've added the site. ✌",
+      description: "You've added the site ✌",
       status: 'success',
       duration: 5000,
       isClosable: true
     })
+    onClose()
   }
 
   return (
@@ -57,19 +65,19 @@ export default function AddSiteModal() {
                 <Input
                   ref={initialRef}
                   placeholder="My Site"
-                  type="site"
-                  {...register('site', {
+                  type="name"
+                  {...register('name', {
                     required: 'Required'
                   })}
                 />
               </FormControl>
 
               <FormControl mt={4}>
-                <FormLabel>Link</FormLabel>
+                <FormLabel>URL</FormLabel>
                 <Input
                   placeholder="https://website.com"
-                  type="link"
-                  {...register('link', {
+                  type="url"
+                  {...register('url', {
                     required: 'Required'
                   })}
                 />
@@ -77,7 +85,7 @@ export default function AddSiteModal() {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={onClose} fontWeight="medium">
+              <Button mr={4} onClick={onClose} fontWeight="medium">
                 Cancel
               </Button>
               <Button
