@@ -54,15 +54,11 @@ export default function AddSiteModal({ children }) {
   return (
     <>
       <Button
-        variant="solid"
-        size="md"
-        fontWeight="bold"
-        backgroundColor="pink.500"
-        color="white"
         fontWeight="medium"
-        _hover={{ bg: 'pink.700' }}
+        size="md"
+        colorScheme="pink"
+        color="whiteAlpha.900"
         _active={{
-          bg: 'pink.800',
           transform: 'scale(0.95)'
         }}
         onClick={onOpen}
@@ -101,7 +97,14 @@ export default function AddSiteModal({ children }) {
             </ModalBody>
 
             <ModalFooter>
-              <Button mr={4} onClick={onClose} fontWeight="medium">
+              <Button
+                mr={4}
+                fontWeight="medium"
+                _active={{
+                  transform: 'scale(0.95)'
+                }}
+                onClick={onClose}
+              >
                 Cancel
               </Button>
               <Button
@@ -109,6 +112,9 @@ export default function AddSiteModal({ children }) {
                 colorScheme="pink"
                 color="whiteAlpha.900"
                 mr={3}
+                _active={{
+                  transform: 'scale(0.95)'
+                }}
                 onClick={handleSubmit(onCreateSite)}
               >
                 Create
