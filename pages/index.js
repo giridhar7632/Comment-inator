@@ -1,5 +1,6 @@
 import { Button, Flex, Icon } from '@chakra-ui/react'
 import Head from 'next/head'
+import NextLink from 'next/link'
 import { useAuth } from '@/lib/auth'
 import { Logo } from '@/styles/icons'
 
@@ -18,9 +19,11 @@ export default function Home() {
       </Head>
       <Logo color="pink.500" boxSize="64px" />
       {auth.user ? (
-        <Button mt={4} size="sm" onClick={(e) => auth.signout()}>
-          Sign Out
-        </Button>
+        <NextLink href="/dashboard">
+          <Button mt={4} size="sm">
+            View Dashboard
+          </Button>
+        </NextLink>
       ) : (
         <Button mt={4} size="sm" onClick={(e) => auth.signinWithGitHub()}>
           Sign In
