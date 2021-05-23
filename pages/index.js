@@ -15,6 +15,13 @@ export default function Home() {
       h="100vh"
     >
       <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if (document.cookie && document.cookie.includes('comment-inator-auth')){
+            window.location.href = "/dashboard"
+          }`
+          }}
+        />
         <title>Comment-inator</title>
       </Head>
       <Logo color="pink.500" boxSize="64px" />
