@@ -16,7 +16,8 @@ export async function getStaticProps(context) {
   return {
     props: {
       initialComments: comments
-    }
+    },
+    unstable_revalidate: 1
   }
 }
 
